@@ -48,4 +48,5 @@
      :gender :male
      :activity-level :medium
      :objective :gain})
+    ;; => {:bmi 31.02M, :bee 2416.75, :tee 4253.4800000000005, :calories 4553.4800000000005}
   )
