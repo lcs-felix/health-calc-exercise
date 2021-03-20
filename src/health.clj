@@ -1,26 +1,26 @@
 (ns health)
 
-(def basal-energy-expenditure-infos
-  {:male [13.75 5 6.76 66.5]
-   :female [9.56 1.85 4.68 66.5]})
+(def basal-energy-expenditure-coefficients
+  {:male [13.75M 5M 6.76M 66.5M]
+   :female [9.56M 1.85M 4.68M 66.5M]})
 
 (def activity-levels
-  {:low 1.53
-   :medium 1.76
-   :high 2.25})
+  {:low 1.53M
+   :medium 1.76M
+   :high 2.25M})
 
 (def objectives
-  {:lose -400
-   :gain 300
-   :define 0})
+  {:lose -400M
+   :gain 300M
+   :define 0M})
 
 (defn calculate-bmi [weight height]
   (with-precision 4 (/ weight (* height height))))
 
 (defn basal-energy-expenditure [weight height age gender]
-  (let [[c1 c2 c3 c4] (gender basal-energy-expenditure-infos)]
+  (let [[c1 c2 c3 c4] (gender basal-energy-expenditure-coefficients)]
     (+ (* c1 weight)
-       (* c2 (* height 100))
+       (* c2 (* height 100M))
        (* c3 age)
        c4)))
 
@@ -48,5 +48,5 @@
      :gender :male
      :activity-level :medium
      :objective :gain})
-    ;; => {:bmi 31.02M, :bee 2416.75, :tee 4253.4800000000005, :calories 4553.4800000000005}
+    ;; => {:bmi 31.02M, :bee 2416.75M, :tee 4253.4800M, :calories 4553.4800M}
   )
